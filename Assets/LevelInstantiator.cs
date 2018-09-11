@@ -25,7 +25,7 @@ public class LevelInstantiator : MonoBehaviour
     void CreateLevel() {
         MapController mainMap = GameObject.Instantiate<MapController>(mainMapPrefab,transform.parent) as MapController;
 
-        MapStitcher mapStitcher = new MapStitcher(objects);
+        MapStitcher mapStitcher = new MapStitcher(objects, mainMap.transform);
 
         Vector2[] points = mapStitcher.getPoints();
         mainMap.setMapLine(points);

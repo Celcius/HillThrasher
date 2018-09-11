@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapStitcher {
+    
+    Transform _miscellaneousObjects;
 
-    GameObject[] _miscellaneousObjects;
     Vector2[] _points;
 
-    public MapStitcher(MapController[] maps) {
+    Transform _parent;
+
+    public MapStitcher(MapController[] maps, Transform parent) {
+        _miscellaneousObjects = new GameObject().GetComponent<Transform>();
+        _miscellaneousObjects.parent = parent;
+        _miscellaneousObjects.position = Vector3.zero;
         stitchMaps(maps);
     }
 
@@ -19,10 +25,22 @@ public class MapStitcher {
         if (m.Length <= 0)
             return;
 
+        //_miscellaneousObjects.position = m[0]._collider.points[0];
         Vector2[] pointsPivot = m[0]._collider.points;
+        Vector2 startPivot = - m[0]._collider.points[0];
 
-        for (int i = 1; i < m.Length; i++)
+        for (int i = 0; i < m.Length; i++)
         {
+            addObjectCopiesWithRelativePosition(startPivot, m[0]);
+            if (i < m.Length - 1)
+            {
+                startPivot += pointsPivot[pointsPivot.Length - 1] - m[i + 1]._collider.points[0];
+            }
+
+            if (i == 0) {
+                continue;
+            }
+            
             pointsPivot = stitchColliders(pointsPivot, m[i]._collider.points);
         }
 
@@ -64,9 +82,19 @@ public class MapStitcher {
         return points;
     }
 
-    public GameObject[] getMiscellaneousObjects() {
-        return _miscellaneousObjects;
+    void addObjectCopiesWithRelativePosition(Vector2 relativeStart, MapController m) {
+
+        Transform[] children = m.getAdditionalChildren();
+
+        foreach (Transform t in children)
+        {
+            Transform copyT = GameObject.Instantiate<Transform>(t, _miscellaneousObjects) as Transform;
+         //   copyT.localPosition = t.localPosition;
+            copyT.position += new Vector3(relativeStart.x, relativeStart.y, 0);
+        }
+
     }
+
     public Vector2[] getPoints() {
         return _points;
     }

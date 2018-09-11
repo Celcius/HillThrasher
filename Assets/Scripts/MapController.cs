@@ -25,6 +25,12 @@ public class MapController : MonoBehaviour {
     [SerializeField]
     public Transform _finishLine;
 
+    [SerializeField]
+    Transform additionalMapsParent;
+
+    [SerializeField]
+    Transform obstaclesParent;
+
     int indexToStartSearching = 0;
 
 
@@ -228,5 +234,22 @@ public class MapController : MonoBehaviour {
         _finishLine.position = _collider.points[_collider.points.Length-1];
     }
 
-  
+    public Transform[] getAdditionalChildren() {
+        
+        Transform[] children1 = additionalMapsParent.GetComponentsInChildren<Transform>();
+        Transform[] children2 = obstaclesParent.GetComponentsInChildren<Transform>();
+        List<Transform> list = new List<Transform>();
+
+        foreach(Transform t in children1) {
+            if (t.parent == additionalMapsParent)
+                list.Add(t);
+        }
+        foreach (Transform t in children2)
+        {
+            if (t.parent == obstaclesParent)
+                list.Add(t);
+        }
+
+        return list.ToArray();
+    }
 }
