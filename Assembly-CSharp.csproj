@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LevelInstantiator.cs" />
     <Compile Include="Assets\Lobby\Scripts\DraggablePanel.cs" />
     <Compile Include="Assets\Lobby\Scripts\EventSystemChecker.cs" />
     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Scripts\MapController.cs" />
     <Compile Include="Assets\Scripts\MapDrawer.cs" />
     <Compile Include="Assets\Scripts\MapSegment.cs" />
+    <Compile Include="Assets\Scripts\MapStitcher.cs" />
     <Compile Include="Assets\Scripts\MeshRenderer.cs" />
     <Compile Include="Assets\Scripts\musiccontroller.cs" />
     <Compile Include="Assets\Scripts\MyNetworkManager.cs" />

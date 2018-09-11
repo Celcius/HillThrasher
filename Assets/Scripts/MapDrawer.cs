@@ -12,9 +12,6 @@ public class MapDrawer : MonoBehaviour {
     float _height = 50;
 
     [SerializeField]
-    float _zPosition = 0;
-
-    [SerializeField]
     MeshFilter _topMesh;
     [SerializeField]
     MeshFilter _botMesh;
@@ -48,8 +45,8 @@ public class MapDrawer : MonoBehaviour {
             int i = 0;
             foreach (Vector2 point in points)
             {
-                line[i] = new Vector2(point.x+controller.transform.position.x,
-                                      point.y+controller.transform.position.y);
+                line[i] = new Vector2(point.x,
+                                      point.y);
                 i++;
             }
 

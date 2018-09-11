@@ -212,5 +212,21 @@ public class MapController : MonoBehaviour {
 		
 	}
 
+    public void setMapLine(Vector2[] points) {
+        if (_collider == null)
+            return;
+        
+        _collider.points = points;
+        updateLevelPositions();
+    }
+
+    void updateLevelPositions() {
+        if (_collider == null || _collider.points.Length <= 0)
+            return;
+        
+        _startPos.position = _collider.points[0];
+        _finishLine.position = _collider.points[_collider.points.Length-1];
+    }
+
   
 }

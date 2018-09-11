@@ -64,4 +64,8 @@ public class followPlayer : MonoBehaviour {
     {
         return _mainMap._startPos.position.x + Camera.main.orthographicSize * 1.5f;
     }
+
+    public void setMap(MapController map) {
+        _mainMap = map;
+    }
 }

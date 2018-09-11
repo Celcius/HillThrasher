@@ -11,6 +11,7 @@ public class LocalPlayer : MonoBehaviour {
 
         followPlayer cam = Camera.main.GetComponent<followPlayer>();
         cam._player = transform;
+
         transform.position = cam._mainMap._startPos.position;
     }
 	
