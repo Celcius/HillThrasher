@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{0FB634F9-F068-68F2-27F5-CB0B2C23E499}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MapController.cs">
+    <Files>
+      <File FileName="Assets/Scripts/MapController.cs" Line="19" Column="21" />
+      <File FileName="Assets/Scripts/MapDrawer.cs" Line="37" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/ivo.capelo/HillThrasher/Assets/Scripts/MapDrawer.cs" relfile="Assets/Scripts/MapDrawer.cs" line="53" column="1" />
+      <Breakpoint file="/Users/ivo.capelo/HillThrasher/Assets/Scripts/MapController.cs" relfile="Assets/Scripts/MapController.cs" line="170" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
