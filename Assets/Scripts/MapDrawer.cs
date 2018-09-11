@@ -19,48 +19,57 @@ public class MapDrawer : MonoBehaviour {
     [SerializeField]
     MeshFilter _botMesh;
 
+    [SerializeField]
     MapController _controller;
-    EdgeCollider2D _collider;
 
     // Use this for initialization
     void Start () {
-        _controller = GetComponent<MapController>();
-        _collider = GetComponent<EdgeCollider2D>();
-
+        _controller = GetComponentInParent<MapController>();
         drawMap();
     }
 
-    public void drawMap()  {
-        Vector2[] line;
-        if (_controller != null)
+    public void drawMap()   {
+        if (_controller == null)
         {
-            line = _controller.getPoints();
+            return;
         }
-        else
+
+        drawController(_controller);
+    }
+
+    public void drawController(MapController controller)
+    {
+        Vector2[] line = {Vector2.zero, Vector2.zero};
+        if (controller != null)
         {
-            line = new Vector2[_collider.points.Length];
+            Vector2[] points = controller.getPoints();
+
+            line = new Vector2[points.Length];
             int i = 0;
-            foreach (Vector2 point in _collider.points)
+            foreach (Vector2 point in points)
             {
-                Vector3 p = _collider.transform.TransformPoint(point);
-                line[i] = new Vector2(p.x, p.y);
+                line[i] = new Vector2(point.x+controller.transform.position.x,
+                                      point.y+controller.transform.position.y);
                 i++;
             }
+
+
+        }
+        if (line.Length == 2 && line[0] == Vector2.zero && line[1] == Vector2.zero) {
+            return;
         }
 
-
-        Vector3[][] vertices = getQuadPointsFromLinePoints(line, _height, _zPosition);
+        Vector3[][] vertices = getQuadPointsFromLinePoints(line, _height, controller.transform.position.z);
 
         _topMesh.mesh = createMesh(vertices[0]);
         _botMesh.mesh = createMesh(vertices[1]);
     }
 
 
-
     public Vector3[][] getQuadPointsFromLinePoints(Vector2[] points,float height, float zPos)
     {
         Vector3[] retPointsTop = new Vector3[points.Length * 4-2];
-        Vector3[] retPointsBot = new Vector3[points.Length * 4 - 2];
+        Vector3[] retPointsBot = new Vector3[points.Length * 4-2];
 
 
         for (int i = 0; i < points.Length -1; i++)

@@ -17,7 +17,7 @@ public class MapController : MonoBehaviour {
 
     ArrayList _points;
     [SerializeField]
-    EdgeCollider2D _collider;
+    public EdgeCollider2D _collider;
 
     [SerializeField]
     public Transform _startPos;
@@ -29,8 +29,16 @@ public class MapController : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
-        if(_collider == null) {
+    void Awake () {
+        getCollider();
+        updatePoints();
+    }
+
+    void getCollider() {
+        if (_collider != null)
+            return;
+        if (_collider == null)
+        {
             if (_collider != null)
                 return;
 
@@ -41,11 +49,11 @@ public class MapController : MonoBehaviour {
                 return;
             _points = new ArrayList();
         }
-        updatePoints();
     }
 
     void updatePoints()
     {
+        getCollider();
         if (_collider == null)
             return;
         
