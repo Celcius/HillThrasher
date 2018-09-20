@@ -106,6 +106,7 @@ public class MyPlayerController : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _spriteRender = GetComponentInChildren<SpriteRenderer>();
         _sp = GetComponent<SoundPlayer>();
+        _mainMap = Camera.main.GetComponent<followPlayer>()._mainMap;
     }
 
     // Update is called once per frame
@@ -333,6 +334,7 @@ public class MyPlayerController : MonoBehaviour
             {
                 _grounded = false;
                 _currentMap = null;
+                Debug.Log("LEFT MAP!");
             }   
         }
         else

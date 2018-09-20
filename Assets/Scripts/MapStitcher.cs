@@ -10,11 +10,79 @@ public class MapStitcher {
 
     Transform _parent;
 
-    public MapStitcher(MapController[] maps, Transform parent) {
+    public MapStitcher(LevelDefinition level, Transform parent) {
+
+        MapController[] maps = generateMap(level);
         _miscellaneousObjects = new GameObject().GetComponent<Transform>();
         _miscellaneousObjects.parent = parent;
         _miscellaneousObjects.position = Vector3.zero;
         stitchMaps(maps);
+    }
+
+    public MapController[] generateMap(LevelDefinition level) {
+
+        Debug.Log("Generating Map for definition " + level);
+        List<MapController> maps = new List<MapController>();
+        int i = 0;
+        foreach(LevelDefinitionSection section in level.sections) {
+            Debug.Log("=====================");
+            Debug.Log("Generating section " + i);
+            MapController[] mapSections = generateMapsFromSection(section);
+            foreach(MapController map in mapSections) {
+                maps.Add(map);
+            }
+            Debug.Log("=====================");
+            i++;
+        }
+
+        return maps.ToArray();
+    }
+
+    public MapController[] generateMapsFromSection(LevelDefinitionSection section)
+    {
+        if (section.maps.Length == 0 ||
+           section.weights.Length == 0 ||
+            section.maps.Length != section.weights.Length ||
+           section.maxLength < section.minLength ||
+           section.maxLength == 0)
+        {
+            return new MapController[0];
+        }
+        int sectionLength = Random.Range(section.minLength, section.maxLength);
+        Debug.Log("Length: " + sectionLength);
+
+        MapController[] maps = new MapController[sectionLength];
+
+        int[] computedWeights = new int[section.weights.Length];
+        int totalWeight = 0;
+        foreach (int weight in section.weights) {
+            totalWeight += weight;
+        }
+        for (int i = 0; i < computedWeights.Length; i++) {
+            computedWeights[i] = (int)(((float)section.weights[i] / (float)totalWeight) * 100.0f);
+            if (i > 0)
+                computedWeights[i] = computedWeights[i] + computedWeights[i - 1];
+        }
+
+        for (int i = 0; i < sectionLength; i++) {
+            int random = Random.Range(0, 100);
+            int index = indexForValue(random, computedWeights);
+            maps[i] = section.maps[index];
+
+            Debug.Log("[" + i + "] " + maps[i]);
+        }
+
+        return maps;
+    }
+
+    private int indexForValue(int value, int[] weights) {
+        value = Mathf.Clamp(value, weights[0], weights[weights.Length - 1]);
+        for (int i = 0; i < weights.Length; i++) {
+            if(weights[i] >= value) {
+                return i;
+            }
+        }
+        return weights.Length - 1; // Defaults to lsat element
     }
 
     public void stitchMaps(MapController[] m) {

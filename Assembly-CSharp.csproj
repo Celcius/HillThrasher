@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\DrawPlayerMinimap.cs" />
     <Compile Include="Assets\Scripts\followPlayer.cs" />
     <Compile Include="Assets\Scripts\followPlayerSimple.cs" />
+    <Compile Include="Assets\Scripts\LevelDefinition.cs" />
     <Compile Include="Assets\Scripts\LocalPlayer.cs" />
     <Compile Include="Assets\Scripts\MapController.cs" />
     <Compile Include="Assets\Scripts\MapDrawer.cs" />

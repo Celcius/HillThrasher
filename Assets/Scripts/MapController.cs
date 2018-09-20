@@ -35,7 +35,7 @@ public class MapController : MonoBehaviour {
 
 
     // Use this for initialization
-    void Awake () {
+    void Start () {
         getCollider();
         updatePoints();
     }
@@ -192,6 +192,9 @@ public class MapController : MonoBehaviour {
 
     public int getRightIndex(float x)
     { 
+        if(_points == null) {
+            updatePoints();
+        }
         int i2 = Mathf.Min(indexToStartSearching + 1, _points.Count - 1);
         
         for (; i2 < _points.Count; i2++)

@@ -5,14 +5,11 @@ using UnityEngine;
 public class LevelInstantiator : MonoBehaviour
 {
     [SerializeField]
-    MapDrawer drawerPrefab;
-
-    [SerializeField]
     MapController mainMapPrefab;
 
 
     [SerializeField]
-    MapController[] objects;
+    LevelDefinition _level;
 	// Use this for initialization
 	void Start () {
         
@@ -24,8 +21,10 @@ public class LevelInstantiator : MonoBehaviour
 
     void CreateLevel() {
         MapController mainMap = GameObject.Instantiate<MapController>(mainMapPrefab,transform.parent) as MapController;
+        mainMap.tag = "Terrain";
+        mainMap.gameObject.layer = LayerMask.NameToLayer("Terrain");
 
-        MapStitcher mapStitcher = new MapStitcher(objects, mainMap.transform);
+        MapStitcher mapStitcher = new MapStitcher(_level, mainMap.transform);
 
         Vector2[] points = mapStitcher.getPoints();
         mainMap.setMapLine(points);
@@ -34,7 +33,7 @@ public class LevelInstantiator : MonoBehaviour
 
         Camera.main.GetComponent<followPlayer>().setMap(mainMap);
 
-        MapDrawer drawer = Instantiate<MapDrawer>(drawerPrefab,mainMap.transform) as MapDrawer;
+        MapDrawer drawer = Instantiate<MapDrawer>(_level.drawerPrefab,mainMap.transform) as MapDrawer;
     }
 	
 	// Update is called once per frame
