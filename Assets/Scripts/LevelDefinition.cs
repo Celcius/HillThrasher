@@ -16,4 +16,5 @@ public class LevelDefinition : ScriptableObject {
 
     public LevelDefinitionSection[] sections;
     public MapDrawer drawerPrefab;
+    public AudioClip music;
 }

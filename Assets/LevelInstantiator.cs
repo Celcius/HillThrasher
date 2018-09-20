@@ -32,6 +32,9 @@ public class LevelInstantiator : MonoBehaviour
         // TODO place objects
 
         Camera.main.GetComponent<followPlayer>().setMap(mainMap);
+        AudioSource source = Camera.main.GetComponent<AudioSource>();
+        source.clip = _level.music;
+        source.Play();
 
         MapDrawer drawer = Instantiate<MapDrawer>(_level.drawerPrefab,mainMap.transform) as MapDrawer;
     }

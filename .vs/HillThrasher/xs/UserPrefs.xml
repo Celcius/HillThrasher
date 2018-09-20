@@ -1,24 +1,26 @@
 ﻿<Properties StartupConfiguration="{0FB634F9-F068-68F2-27F5-CB0B2C23E499}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelDefinition.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DrawPlayerMinimap.cs">
     <Files>
-      <File FileName="Assets/Scripts/MapController.cs" Line="150" Column="20" />
-      <File FileName="Assets/Scripts/MapDrawer.cs" Line="12" Column="24" />
+      <File FileName="Assets/Scripts/MapController.cs" Line="202" Column="46" />
+      <File FileName="Assets/Scripts/MapDrawer.cs" Line="36" Column="5" />
       <File FileName="Assets/Scripts/LocalPlayer.cs" Line="14" Column="1" />
       <File FileName="Assets/Scripts/followPlayer.cs" Line="65" Column="1" />
-      <File FileName="Assets/Scripts/MapStitcher.cs" Line="91" Column="2" />
-      <File FileName="Assets/LevelInstantiator.cs" Line="18" Column="9" />
-      <File FileName="Assets/Scripts/MyPlayerController.cs" Line="287" Column="49" />
+      <File FileName="Assets/Scripts/MapStitcher.cs" Line="72" Column="36" />
+      <File FileName="Assets/LevelInstantiator.cs" Line="37" Column="23" />
+      <File FileName="Assets/Scripts/MyPlayerController.cs" Line="466" Column="1" />
       <File FileName="Assets/Scripts/followPlayerSimple.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SoundPlayer.cs" Line="58" Column="17" />
-      <File FileName="Assets/Scripts/LevelDefinition.cs" Line="5" Column="77" />
+      <File FileName="Assets/Scripts/LevelDefinition.cs" Line="19" Column="28" />
+      <File FileName="Assets/Scripts/musiccontroller.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/DrawPlayerMinimap.cs" Line="22" Column="56" />
+      <File FileName="Assets/Scripts/DrawMinimap.cs" Line="22" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/ivo.capelo/HillThrasher/Assets/Scripts/MyPlayerController.cs" relfile="Assets/Scripts/MyPlayerController.cs" line="356" column="1" />
-      <Breakpoint file="/Users/ivo.capelo/HillThrasher/Assets/Scripts/MapController.cs" relfile="Assets/Scripts/MapController.cs" line="40" column="1" />
+      <Breakpoint file="/Users/ivo.capelo/HillThrasher/Assets/Scripts/MyPlayerController.cs" relfile="Assets/Scripts/MyPlayerController.cs" line="382" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
