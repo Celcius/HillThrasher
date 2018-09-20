@@ -31,7 +31,7 @@ public class MapStitcher {
 
         for (int i = 0; i < m.Length; i++)
         {
-            addObjectCopiesWithRelativePosition(startPivot, m[0]);
+            addObjectCopiesWithRelativePosition(startPivot, m[i]);
             if (i < m.Length - 1)
             {
                 startPivot += pointsPivot[pointsPivot.Length - 1] - m[i + 1]._collider.points[0];
